@@ -1,0 +1,39 @@
+name: Deploy to Infinity (FTP)
+
+on:
+  push:
+    branches: [ "main" ]      # Tự chạy khi push lên nhánh main
+  workflow_dispatch:           # Cho phép bấm "Run workflow" thủ công
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Lấy code
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      # 2) (Tuỳ chọn) Build/bundle nếu bạn có tool build (vite/webpack). Web tĩnh HTML có thể bỏ qua.
+      # - name: Build site
+      #   run: |
+      #     npm ci
+      #     npm run build
+
+      # 3) Upload lên Infinity qua FTP
+      - name: FTP Deploy (SamKirkland action)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}            # vd: ftpupload.net
+          username: ${{ secrets.FTP_USERNAME }}      # vd: epiz_12345678
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}  # vd: htdocs/
+          local-dir: ./                              # thư mục cần upload (gốc repo)
+          # Đồng bộ thông minh: chỉ up file đổi, tự xoá file thừa trên host:
+          dangerous-clean-slate: false
+          exclude: |                                  # loại trừ file/thư mục không nên upload
+            **/.git*
+            **/.github/**
+            **/node_modules/**
+            **/.vscode/**
+            **/README.md
