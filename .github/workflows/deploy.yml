@@ -27,7 +27,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}            # vd: ftpupload.net
           username: ${{ secrets.FTP_USERNAME }}      # vd: epiz_12345678
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_REMOTE_DIR }}  # vd: htdocs/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}/  # vd: htdocs/
           local-dir: ./                              # thư mục cần upload (gốc repo)
           # Đồng bộ thông minh: chỉ up file đổi, tự xoá file thừa trên host:
           dangerous-clean-slate: false
