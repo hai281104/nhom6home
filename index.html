@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Trang chủ — Nhóm 6</title>
+	<style>
+		:root{
+			--accent:#2b6cb0;
+			--muted:#6b7280;
+			--card-bg:#fff;
+			--bg:#f7fafc;
+			font-family: system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+		}
+		body{ margin:0; background:var(--bg); color:#111; }
+		.container{ max-width:1000px; margin:0 auto; padding:24px; }
+		header{ background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.06); position:sticky; top:0; z-index:20; }
+		.navbar{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 24px; }
+		.brand{ font-weight:700; color:var(--accent); }
+		.nav-links{ display:flex; gap:12px; align-items:center; }
+		.nav-links a{ color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:6px; }
+		.nav-links a:hover{ background:#f1f5f9; color:#000; }
+		.hamburger{ display:none; background:none; border:0; font-size:20px; }
+		main{ padding:28px 0; }
+		.hero{ background:linear-gradient(90deg, rgba(43,108,176,.06), rgba(43,108,176,0)); padding:36px; border-radius:10px; display:flex; gap:24px; align-items:center; }
+		.hero .text{ flex:1; }
+		.hero h1{ margin:0 0 8px 0; font-size:28px; }
+		.hero p{ margin:0; color:var(--muted); }
+		.cta{ margin-top:12px; display:inline-block; background:var(--accent); color:#fff; padding:8px 12px; border-radius:8px; text-decoration:none; }
+		.team{ margin-top:28px; }
+		.team-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:12px; }
+		.card{ background:var(--card-bg); padding:14px; border-radius:10px; box-shadow:0 6px 18px rgba(15,23,42,0.04); display:flex; gap:12px; align-items:center; }
+		.avatar{ width:72px; height:72px; border-radius:10px; object-fit:cover; flex-shrink:0; }
+		.member-info h3{ margin:0 0 4px 0; font-size:16px; }
+		.member-info p{ margin:0; color:var(--muted); font-size:14px; }
+		.footer{ margin-top:36px; padding:18px 0; text-align:center; color:var(--muted); font-size:14px; }
+		@media (max-width:720px){
+			.nav-links{ display:none; }
+			.hamburger{ display:block; }
+			.mobile-menu{ display:none; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.06); border-radius:8px; padding:8px; position:absolute; right:16px; top:60px; }
+			.mobile-menu.open{ display:block; }
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="navbar container" role="navigation" aria-label="Main">
+			<div class="brand">Nhóm 6</div>
+			<nav class="nav-links" aria-hidden="false">
+				<a href="#home">Home</a>
+				<a href="#team">Giới thiệu</a>
+				<a href="#contact">Liên hệ</a>
+			</nav>
+			<button class="hamburger" aria-label="Mở menu" id="menuBtn">☰</button>
+			<!-- mobile menu -->
+			<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+				<a href="#home">Home</a><br/>
+				<a href="#team">Giới thiệu</a><br/>
+				<a href="#contact">Liên hệ</a>
+			</div>
+		</div>
+	</header>
+
+	<main class="container">
+		<section id="home" class="hero" aria-labelledby="home-title">
+			<div class="text">
+				<h1 id="home-title">Chào mừng đến với trang chính của Nhóm 6</h1>
+				<p>Trang này trình bày thông tin cơ bản và giới thiệu các thành viên trong nhóm thực hiện dự án.</p>
+				<a class="cta" href="#team">Xem thành viên</a>
+			</div>
+			<div class="illustration" aria-hidden="true">
+				<!-- đơn giản: ảnh placeholder -->
+				<img src="https://via.placeholder.com/220x140?text=Team" alt="" style="border-radius:8px;">
+			</div>
+		</section>
+
+		<section id="team" class="team" aria-labelledby="team-title">
+			<h2 id="team-title">Giới thiệu thành viên nhóm</h2>
+			<p class="muted" style="color:var(--muted); margin-top:6px;">Danh sách các thành viên và vai trò chính trong dự án.</p>
+
+			<div class="team-grid">
+				<div class="card">
+					<div class="member-info">
+						<h3>Nguyễn Hoàng Hải</h3>
+						<p>DH52200618</p>
+                        <p>D22_TH02</p>
+						<p style="font-size:13px; color:var(--muted)">nv.a@example.com</p>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="member-info">
+						<h3>Ngô Huế Đình</h3>
+						<p>DH52200505</p>
+                        <p>D22_TH01</p>
+						<p style="font-size:13px; color:var(--muted)">tt.b@example.com</p>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="member-info">
+						<h3>Nguyễn Phúc Sang</h3>
+						<p>DH52201358</p>
+                        <p>D22_TH01</p>
+						<p style="font-size:13px; color:var(--muted)">lv.c@example.com</p>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="member-info">
+						<h3>Tôn Minh Quân</h3>
+						<p>DH52201297</p>
+                        <p>D22_TH01</p>
+						<p style="font-size:13px; color:var(--muted)">pt.d@example.com</p>
+					</div>
+				</div>
+
+                <div class="card">
+					<div class="member-info">
+						<h3>Văn Thanh Sơn</h3>
+						<p>DH52201377</p>
+                        <p>D22_TH01</p>
+						<p style="font-size:13px; color:var(--muted)">lv.c@example.com</p>
+					</div>
+				</div>
+
+                <div class="card">
+					<div class="member-info">
+						<h3>Trần Đình Định</h3>
+						<p>DH52200508</p>
+                        <p>D22_TH02</p>
+						<p style="font-size:13px; color:var(--muted)">lv.c@example.com</p>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<section id="contact" style="margin-top:28px;" aria-labelledby="contact-title">
+			<h2 id="contact-title">Liên hệ</h2>
+			<p style="color:var(--muted); margin-top:6px;">Email chung: nhom6@example.com</p>
+		</section>
+
+		<footer class="footer">
+			<p>&copy; Nhóm 6 — Trang demo</p>
+		</footer>
+	</main>
+
+	<script>
+		// Simple smooth scroll for anchor links
+		document.querySelectorAll('a[href^="#"]').forEach(a=>{
+			a.addEventListener('click', function(e){
+				const target = document.querySelector(this.getAttribute('href'));
+				if(target){
+					e.preventDefault();
+					target.scrollIntoView({behavior:'smooth', block:'start'});
+					// close mobile menu if open
+					document.getElementById('mobileMenu')?.classList.remove('open');
+				}
+			});
+		});
+
+		// Mobile menu toggle
+		const menuBtn = document.getElementById('menuBtn');
+		const mobileMenu = document.getElementById('mobileMenu');
+		menuBtn.addEventListener('click', ()=>{
+			const open = mobileMenu.classList.toggle('open');
+			mobileMenu.setAttribute('aria-hidden', (!open).toString());
+		});
+	</script>
+</body>
+</html>
