@@ -1,0 +1,31 @@
+name: Preview PR to Infinity (FTP)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Tạo thư mục preview riêng theo số PR
+      - name: Compute preview dir
+        id: meta
+        run: echo "DIR=preview/${{ github.event.number }}/" >> $GITHUB_OUTPUT
+
+      - name: FTP Deploy (Preview)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Ghép preview vào sau htdocs/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}${{ steps.meta.outputs.DIR }}
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/node_modules/**
+            **/.vscode/**
